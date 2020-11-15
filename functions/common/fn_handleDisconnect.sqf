@@ -12,7 +12,7 @@ private _fnc_onDisconnect = {
         _savePlayerPosition = ([missionConfigFile >> "CfgGradPersistence", "savePlayerPosition", 0] call BIS_fnc_returnConfigEntry) == 1;
         _savePlayerMoney = ([missionConfigFile >> "CfgGradPersistence", "savePlayerMoney", 0] call BIS_fnc_returnConfigEntry) == 1;
 
-        if (!_savePlayerMoney && {!_savePlayerDamage} && {!_savePlayerPosition} && {!_savePlayerMoney}) exitWith {false};
+        if ({!_savePlayerInventory} && {!_savePlayerDamage} && {!_savePlayerPosition} && {!_savePlayerMoney}) exitWith {false};
 
         if !(missionNamespace getVariable [QGVAR(thisMissionCleared),false]) then {
             INFO_1("Player %1 disconnected. Saving data.", _name);
